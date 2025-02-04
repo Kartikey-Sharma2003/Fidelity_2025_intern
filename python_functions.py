@@ -89,7 +89,23 @@
 # def add(x,y):
 #     return x+y
 # add(10,20)  
-import fidelity_ds as fd
-from fidelity_ds import month  
-print(month('march')) 
-  
+# import fidelity_ds as fd
+# from fidelity_ds import month  
+# print(month('march')) 
+# List of usernames
+def create_user_email_dict():
+    """
+    Creates a dictionary of usernames and emails based on user input.
+    """
+    usernames = input("Enter usernames separated by space: ").split()
+    emails = input("Enter emails separated by space: ").split()
+
+    user_email_dict = {}
+    for username, email in zip(usernames, emails):
+        if '@' in email:
+            user_email_dict[username] = email
+
+    return user_email_dict
+
+user_email_dict = create_user_email_dict()
+print(user_email_dict)
