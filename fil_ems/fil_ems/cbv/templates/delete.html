@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8d7da;
+            margin: 40px;
+        }
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        button, a {
+            margin: 10px;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .delete-btn {
+            background: red;
+            color: white;
+            border: none;
+        }
+        .cancel-btn {
+            background: gray;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Delete Product</h2>
+        <p>Are you sure you want to delete <strong>{{ object.prod_name }}</strong>?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="delete-btn">Yes, Delete</button>
+        </form>
+
+        <a href="{% url 'cbv:product_list' %}" class="cancel-btn">Cancel</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        a {
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .delete-btn {
+            background: red;
+            color: white;
+        }
+        .update-btn {
+            background: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Product List</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.prod_id }}</td>
+            <td>{{ product.prod_name }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+                <a href="{% url 'cbv:cbv_update' product.pk %}" class="update-btn">Edit</a>
+                <a href="{% url 'cbv:cbv_delete' product.pk %}" class="delete-btn">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{% url 'cbv:cbv_create' %}">Create New Product</a>
+
+</body>
+</html>

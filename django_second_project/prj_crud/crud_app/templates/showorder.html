@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Orders</title>
+</head>
+<body>
+    <h1>Orders List</h1>
+    <table border="1">
+        <tr>
+            <th>Order ID</th>
+            <th>Customer Name</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        {% for order in ord %}
+        <tr>
+            <td>{{ order.ordId }}</td>
+            <td>{{ order.name }}</td>
+            <td>{{ order.email }}</td>
+            <td>{{ order.addr }}</td>
+            <td>{{ order.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
