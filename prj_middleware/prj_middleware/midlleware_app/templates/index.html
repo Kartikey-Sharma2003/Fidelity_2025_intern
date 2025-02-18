@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            margin-top: 20px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .card-body {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Employee List</h2>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Salary</th>
+                            <th>Date of Joining</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for queryset in queryset %}
+                        <tr>
+                            <td>{{ queryset.emp_id }}</td>
+                            <td>{{ queryset.e_fname }}</td>
+                            <td>{{ queryset.e_lname }}</td>
+                            <td>{{ queryset.salary }}</td>
+                            <td>{{ queryset.doj }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <h3>Total Salary: {{ queryset.total_salary }}</h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

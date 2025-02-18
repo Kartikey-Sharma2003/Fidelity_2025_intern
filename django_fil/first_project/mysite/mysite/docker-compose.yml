@@ -1,0 +1,32 @@
+version: '3'
+services:
+  mysql_db:
+    image: mysql:8.0
+    # environment:
+    #   MYSQL_ROOT_PASSWORD: 'root'
+    #   MYSQL_DATABASE: 'fidelity'
+    #   MYSQL_USER: 'root'
+    #   MYSQL_PASSWORD: 'kartikey@1'
+    ports:
+      - '3306:3306'
+    volumes:
+      - db_data:/var/lib/mysql
+
+  web:
+    build: .
+    container_name: django
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - '8000:8000'
+    depends_on:
+      - mysql_db
+    environment:
+      - DATABASE_HOST=mysql_db
+      - DATABASE_NAME=fidelity
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=kartikey@1
+
+volumes:
+  db_data:
